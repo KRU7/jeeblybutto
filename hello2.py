@@ -4,6 +4,7 @@ import sqlite3 as sql
 from random import randint
 import time
 from flask import jsonify
+import os
 
 local_time = time.asctime(time.localtime(time.time()))
 
@@ -116,5 +117,5 @@ def test_get():
     return "Server up and running."
 
 if __name__ == '__main__':
-   app.run(debug = True)
-   
+  port = int(os.getenv('PORT', 5000))
+  app.run(debug=True, port=port, host='0.0.0.0')
